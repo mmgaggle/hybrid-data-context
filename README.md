@@ -39,7 +39,24 @@ You can watch the image building process progress by tailing the buildconfig log
 oc logs -f buildconfig/openshift-spark
 ```
 
-If you're tailing the log until the build completes, then you can press ctl-c to drop back to the shell. Next, we'll deploy a Jupyter notebook application into OpenShift using the openshift-spark image we built as the base, and provide a few environmental variables.
+If you're tailing the log until the build completes, then you can press ctl-c to drop back to the shell.
+
+Assuming the openshift-spark image is built, we can use it as a base image for building a base-notebook image
+
+```
+oc new-build https://github.com/radanalyticsio/base-notebook \
+             --docker-image="172.30.1.1:5000/myproject/openshift-spark:latest" \
+             --strategy=docker
+```
+
+Again, you can watch the image building process progress by tailing the buildconfig log.
+
+```
+oc logs -f buildconfig/base-notebook
+```
+
+
+Next, we'll deploy a Jupyter notebook application into OpenShift using the openshift-spark image we built as the base, and provide a few environmental variables.
 
 ```
 oc new-app -i myproject/base-notebook:latest \
