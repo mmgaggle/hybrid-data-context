@@ -1,8 +1,13 @@
-# Hybrid Data Context
+# Background
+
+
+# Prequisites
 
 This tutorial runs on OpenShift, the easiest way to experience OpenShift is
 using Minishift. For details about how to get setup Minishift on your local
 machine I suggest the [Minishift Getting Started](https://docs.okd.io/latest/minishift/getting-started/installing.html) guide.
+
+# Tutorial
 
 Startup Minishift
 
