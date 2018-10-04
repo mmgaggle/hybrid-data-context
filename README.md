@@ -45,7 +45,7 @@ If you're tailing the log until the build completes, then you can press ctl-c to
 oc new-app -i myproject/base-notebook:latest \
            -e JUPYTER_NOTEBOOK_PASSWORD=developer \
            -e RGW_API_ENDPOINT=$(minishift openshift service ceph-nano-0 --url) \
-           -e JUPYTER_NOTEBOOK_X_INCLUDE=http://mmgaggle-bd.s3.amazonaws.com/ceph-notebook.ipynb
+           -e JUPYTER_NOTEBOOK_X_INCLUDE=https://raw.githubusercontent.com/mmgaggle/hybrid-data-context/master/hybrid-data-context.ipynb
 ```
 
 Now we need to expose the OpenShift secrets to the Jupyter notebook application's environment.
