@@ -19,7 +19,7 @@ minishift start
 
 ## Ceph Nano
 
-Assuming this repository is your current working directory, we'll start by creating a Ceph Nano service that will server as a private shared data context.
+Assuming this repository is your current working directory, we'll start by creating a Ceph Nano service that will serve as a private shared data context.
 
 First, you will need to add add a security context to your user to allow them to run the Ceph Nano service.
 
