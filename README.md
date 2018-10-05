@@ -43,7 +43,7 @@ oc expose pod ceph-nano-0 --type=NodePort
 
 ## Building Spark and Jupyter Notebook Images
 
-The [radanalytics.io](https://radanalytics.io) community is focused on empoowering intelligent application development on the OpenShift Platform. One of the artifacts maintained by the community is incomplete Openshift Spark builder images [(openshift-spark-inc)](https://hub.docker.com/r/radanalyticsio/openshift-spark-inc/) that can be combined with a Spark tarball to create usable OpenShift Spark images (openshift-spark). I've created a custom Spark 2.3.2 tarball that includes Hadoop 2.8.5 for the purposes of this tutorial, and the following commands will combine the incomplete OpenShift Spark images with it.
+The [radanalytics.io](https://radanalytics.io) community is focused on empoowering intelligent application development on the OpenShift Platform. One of the artifacts maintained by the community is incomplete Openshift Spark builder images [(openshift-spark-inc)](https://hub.docker.com/r/radanalyticsio/openshift-spark-inc/) that can be combined with a Spark tarball to create usable OpenShift Spark images (openshift-spark). I've created a custom Spark 2.3.2 tarball that includes Hadoop 2.8.5 for the purposes of this tutorial, and the following commands will combine it the [radanalyticsio](https://radanalytics.io) incomplete OpenShift Spark builder images.
 
 ```
 oc new-build --name=openshift-spark \
