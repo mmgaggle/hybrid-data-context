@@ -41,7 +41,7 @@ oc create -f ceph-nano.yml
 oc expose pod ceph-nano-0 --type=NodePort
 ```
 
-## Building Spark and Jupyter Notebook Images
+## Building a OpenShift Spark Image
 
 The [radanalytics.io](https://radanalytics.io) community is focused on empoowering intelligent application development on the OpenShift Platform. One of the artifacts maintained by the community is incomplete Openshift Spark builder images [(openshift-spark-inc)](https://hub.docker.com/r/radanalyticsio/openshift-spark-inc/) that can be combined with a Spark tarball to create usable OpenShift Spark images (openshift-spark). I've created a custom Spark 2.3.2 tarball that includes Hadoop 2.8.5 for the purposes of this tutorial, and the following commands will combine it with the [radanalyticsio](https://radanalytics.io) incomplete OpenShift Spark builder images.
 
@@ -62,7 +62,9 @@ oc logs -f buildconfig/openshift-spark
 
 If you're tailing the log and the build completes, then you can press ctl-c to drop back to the shell.
 
-Assuming the openshift-spark image is built, we can use it as a base image for building a base-notebook image. We'll use the base-notebook repository from [radanalyticsio](https://radanalytics.io) as a starting point. You may want to consider forking this repository and using your own copy if you want to build a set of commonly used libraries into the image.
+## Building a Jupyter Notebook Image
+
+Once the openshift-spark image is built, we can use it as a base image for building a base-notebook image. We'll use the base-notebook repository from [radanalyticsio](https://radanalytics.io) as a starting point. You may want to consider forking this repository and using your own copy if you want to build a set of commonly used libraries into the image.
 
 ```
 oc new-build https://github.com/radanalyticsio/base-notebook \
@@ -75,6 +77,8 @@ Again, you can observe the image building process by tailing the buildconfig log
 ```
 oc logs -f buildconfig/base-notebook
 ```
+
+## Creating a Jupyter Notebook application
 
 Once the base-notebook image is built, we can use it to deploy a Jupyter notebook application.
 
