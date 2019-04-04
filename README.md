@@ -92,7 +92,11 @@ oc new-app -i myproject/base-notebook:latest \
 Now expose the Ceph Nano credentials via the OpenShift secret we created earlier to the Jupyter notebook application's environment.
 
 ```
-oc env --from=secret/ceph-rgw-keys dc/base-notebook
+# on ocp < 3.11
+oc set env --from=secret/ceph-rgw-keys dc/base-notebook
+
+# on ocp >=3.11
+oc set env --from=secret/ceph-rgw-keys dc/base-notebook
 ```
 
 Finally, expose a route to the Jupyter notebook so we can access it from our browser.
@@ -100,6 +104,3 @@ Finally, expose a route to the Jupyter notebook so we can access it from our bro
 ```
 oc expose svc/base-notebook
 ```
-
-
-
