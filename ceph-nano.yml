@@ -57,7 +57,7 @@
           env:
           - name: NETWORK_AUTO_DETECT
             value: "4"
-          - name: RGW_CIVETWEB_PORT
+          - name: RGW_FRONTEND_PORT
             value: "8000"
           - name: SREE_PORT
             value: "5001"

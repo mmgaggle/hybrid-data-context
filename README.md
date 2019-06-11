@@ -68,7 +68,7 @@ Once the openshift-spark image is built, we can use it as a base image for build
 
 ```
 oc new-build https://github.com/radanalyticsio/base-notebook \
-             --docker-image="172.30.1.1:5000/myproject/openshift-spark:latest" \
+             -i openshift-spark:latest \
              --strategy=docker
 ```
 
@@ -92,7 +92,7 @@ oc new-app -i myproject/base-notebook:latest \
 Now expose the Ceph Nano credentials via the OpenShift secret we created earlier to the Jupyter notebook application's environment.
 
 ```
-oc env --from=secret/ceph-rgw-keys dc/base-notebook
+oc set env --from=secret/ceph-rgw-keys dc/base-notebook
 ```
 
 Finally, expose a route to the Jupyter notebook so we can access it from our browser.
